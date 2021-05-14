@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/enjoythetoday/static/css/main.f0118fa3.chunk.css",
-    "main.js": "/enjoythetoday/static/js/main.32461fd4.chunk.js",
-    "main.js.map": "/enjoythetoday/static/js/main.32461fd4.chunk.js.map",
+    "main.css": "/enjoythetoday/static/css/main.4afe193b.chunk.css",
+    "main.js": "/enjoythetoday/static/js/main.a9225de3.chunk.js",
+    "main.js.map": "/enjoythetoday/static/js/main.a9225de3.chunk.js.map",
     "runtime-main.js": "/enjoythetoday/static/js/runtime-main.1498a376.js",
     "runtime-main.js.map": "/enjoythetoday/static/js/runtime-main.1498a376.js.map",
-    "static/js/2.1f2116f9.chunk.js": "/enjoythetoday/static/js/2.1f2116f9.chunk.js",
-    "static/js/2.1f2116f9.chunk.js.map": "/enjoythetoday/static/js/2.1f2116f9.chunk.js.map",
+    "static/js/2.f189b682.chunk.js": "/enjoythetoday/static/js/2.f189b682.chunk.js",
+    "static/js/2.f189b682.chunk.js.map": "/enjoythetoday/static/js/2.f189b682.chunk.js.map",
     "index.html": "/enjoythetoday/index.html",
-    "static/css/main.f0118fa3.chunk.css.map": "/enjoythetoday/static/css/main.f0118fa3.chunk.css.map",
-    "static/js/2.1f2116f9.chunk.js.LICENSE.txt": "/enjoythetoday/static/js/2.1f2116f9.chunk.js.LICENSE.txt"
+    "static/css/main.4afe193b.chunk.css.map": "/enjoythetoday/static/css/main.4afe193b.chunk.css.map",
+    "static/js/2.f189b682.chunk.js.LICENSE.txt": "/enjoythetoday/static/js/2.f189b682.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.1498a376.js",
-    "static/js/2.1f2116f9.chunk.js",
-    "static/css/main.f0118fa3.chunk.css",
-    "static/js/main.32461fd4.chunk.js"
+    "static/js/2.f189b682.chunk.js",
+    "static/css/main.4afe193b.chunk.css",
+    "static/js/main.a9225de3.chunk.js"
   ]
 }
