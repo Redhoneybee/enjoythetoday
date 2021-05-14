@@ -2,9 +2,9 @@
     box-sizing : border-box;
 }
 
-body{
-    
+body{    
     background: -webkit-linear-gradient(74deg, rgb(95, 27, 115), rgb(15, 46, 132));
     background: linear-gradient(74deg, rgb(95, 27, 115), rgb(15, 46, 132));
-
+    color : white;
+    font-size : 18px;
 }

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { HashRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
-
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../routes/Home";
 import Auth from "../routes/Auth";
 
-const AppRouter = () => {
-    const [user, setUser] = useState(null);
+const AppRouter = ({ userObj }) => {
     return (
         <Router>
             <Switch>
@@ -16,10 +14,10 @@ const AppRouter = () => {
                     display: "flex",
                     justifyContent: "center"
                 }}>
-                    {user ?
+                    {userObj ?
                         <>
                             <Route exact path="/">
-                                <Home />
+                                <Home userObj={userObj} />
                             </Route>
                         </>
                         :

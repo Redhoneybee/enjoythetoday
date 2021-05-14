@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "../reducers/Users";
 
 const Auth = () => {
     const [name, setName] = useState("");
+    const dispatch = useDispatch();
 
     const onChange = (e) => {
         const { target: { value } } = e;
@@ -11,6 +14,10 @@ const Auth = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (name.length !== 0) {
+            dispatch(setUser(name));
+        }
     }
     return (
         <>
