@@ -4,6 +4,7 @@ import ProblemNameData from "../../datas/game01/game01_name.json";
 import MappingData from "../../datas/game01/game01.json";
 
 import GameEnd from "./GameEnd";
+import Loading from "../Loading";
 
 const GameStart = () => {
     const [round, setRound] = useState(1);
@@ -108,29 +109,26 @@ const GameStart = () => {
                 <>
                     {loading ?
                         <div
-                            className="gameBoard"
+                            className="flex gameBoard"
                             style={{
                                 marginTop: 50,
-                                backgroundColor: "white",
+                                maxWidth: 320,
+                                width: 320,
+                                backgroundColor: "#eeebdd",
                                 padding: "20px 30px",
                                 borderRadius: "20px",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "center",
-                                alignItems: "center"
+                                border: "5px solid #810000"
                             }}>
-                            <div className="roundTitle">
-                                <h3>라운드 {round}</h3>
-                            </div>
+                            <h3 style={{ color: "black" }}>ROUND -{round}-</h3>
                             <img src={problemImage} width="150px" height="150px" />
                             {items &&
                                 items.map(item =>
-                                    <button name={AnimalList[item]} className="btn" onClick={onClick}>{ProblemNameData[AnimalList[item]]}</button>
+                                    <button name={AnimalList[item]} onClick={onClick}>{ProblemNameData[AnimalList[item]]}</button>
                                 )
                             }
                         </div>
                         :
-                        <span>Loading...</span>
+                        <Loading />
                     }
                 </>
                 :
