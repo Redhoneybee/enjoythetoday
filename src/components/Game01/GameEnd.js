@@ -2,6 +2,7 @@ import React from "react";
 import Rating from "../Rating";
 import { useSelector } from "react-redux";
 
+import kakaoImage from "../../images/enjoythetoday.png";
 import Kakao from "../ShareForKakao";
 
 const GameEnd = ({ accuracy, speed }) => {
@@ -20,17 +21,17 @@ const GameEnd = ({ accuracy, speed }) => {
                 border: "5px solid #810000",
                 color: "black",
             }}>
-            <div>
-                <span>{user}님의 게임 결과</span>
+            <div style={{ marginTop: 20 }}>
+                <span><span className="strong">{user}</span> 님의 게임 결과</span>
             </div>
-            <div>
-                <span>정확도 : <Rating rating={accuracy} /></span>
+            <div style={{ marginTop: 15 }}>
+                <span>정확도 : <Rating rating={accuracy / 10} /></span>
             </div>
-            <div>
-                <span>속도 : <Rating rating={speed} /></span>
+            <div style={{ marginTop: 15 }}>
+                <span>속도 : <Rating rating={speed / 10} /></span>
             </div>
-            <span>총 점 : {accuracy + speed}</span>
-            <Kakao />
+            <span style={{ margin: "25px 0" }}>총 점 : <span className="strong">{accuracy + speed}</span></span>
+            <Kakao kakaoImage={kakaoImage} />
         </div>
     );
 }

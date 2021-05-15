@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Kakao = () => {
+const Kakao = ({ kakaoImage }) => {
     const createKakaoButton = () => {
         if (window.Kakao) {
             const kakao = window.Kakao;
@@ -14,32 +14,32 @@ const Kakao = () => {
                 container: '#kakao-link-btn',
                 objectType: 'feed',
                 content: {
-                    title: '타이틀',
-                    description: '#리액트 #카카오 #공유버튼',
-                    imageUrl: 'IMAGE_URL', // i.e. process.env.FETCH_URL + '/logo.png'
+                    title: 'EnjoyTheCode',
+                    description: '#MadForCode #EnjoyTheToday #kakao #정확하게빠르게',
+                    imageUrl: kakaoImage, // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
-                        mobileWebUrl: window.location.href,
-                        webUrl: window.location.href,
+                        mobileWebUrl: 'https://redhoneybee.github.io',
+                        webUrl: 'https://redhoneybee.github.io',
                     },
                 },
                 social: {
                     likeCount: 77,
-                    commentCount: 55,
+                    commentCount: 0,
                     sharedCount: 333,
                 },
                 buttons: [
                     {
                         title: '웹으로 보기',
                         link: {
-                            mobileWebUrl: window.location.href,
-                            webUrl: window.location.href,
+                            mobileWebUrl: 'https://redhoneybee.github.io',
+                            webUrl: 'https://redhoneybee.github.io',
                         },
                     },
                     {
                         title: '앱으로 보기',
                         link: {
-                            mobileWebUrl: window.location.href,
-                            webUrl: window.location.href,
+                            mobileWebUrl: 'https://redhoneybee.github.io',
+                            webUrl: 'https://redhoneybee.github.io',
                         },
                     },
                 ],
@@ -50,10 +50,13 @@ const Kakao = () => {
     useEffect(() => {
         createKakaoButton();
     }, []);
+    const onClickKakao = () => {
+        window.open('https://sharer.kakao.com/talk/friends/picker/link')
+    }
     return (
         <>
-            <button id="kakao-link-btn">
-                공유하기
+            <button id="kakao-link-btn" onClick={onClickKakao} style={{ border: "none" }}>
+                <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
             </button>
         </>
     );

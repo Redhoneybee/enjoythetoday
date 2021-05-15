@@ -1,16 +1,14 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import StarRatings from "react-star-ratings";
 
 const Rating = ({ rating }) => {
     return (
-        <>
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-            <FontAwesomeIcon icon={faStar} />
-        </>
+        <StarRatings
+            rating={rating}
+            starRatedColor="#f21170"
+            starDimension="28px"
+            starSpacing="1px"
+        />
     )
 }
 
