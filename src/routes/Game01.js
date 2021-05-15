@@ -1,30 +1,50 @@
 import React, { useEffect, useState } from "react";
 import { storageService } from "fbase";
 
-const Game01 = () => {
-    const [url, setUrl] = useState("");
-    const storageRef = storageService.ref();
+import Rules from "../components/Game01/Rules";
+import GameStart from "../components/Game01/GameStart";
+import { useHistory } from "react-router";
 
-    useEffect(async () => {
-        const url = await storageRef.child('cat/cat-01.jpg').getDownloadURL();
-
-        setUrl(url);
+const Game01 = ({ userObj }) => {
+    const [mode, setMode] = useState("");
+    const history = useHistory();
+    const checkedPage = () => {
+        if (!userObj) return false;
+        return true;
+    }
+    useEffect(() => {
+        if (!checkedPage()) {
+            history.push("/");
+        }
     }, []);
+
+    const onModeClick = (e) => {
+        const { target: { name } } = e;
+        setMode(name);
+    }
+    console.log(userObj);
     return (
         <>
-            <div>
-                <div>
-                    <span>게임 명 : 정확하고 빠르게</span>
-                </div>
-                <div>
-                    <span>게임규칙</span>
-                    <div>
-                        <span>
-                            <img src={url} width="150px" height="150px" />
-                        </span>
-                    </div>
-                </div>
-            </div>
+            {mode ?
+                <GameStart />
+                :
+                <>
+                    <Rules />
+                    <button
+                        id="beginner"
+                        name="beginner"
+                        onClick={onModeClick}
+                        className="btn"
+                    >초보자 모드</button>
+                    <button
+                        id="expert"
+                        name="expert"
+                        onClick={onModeClick}
+                        className="btn"
+                    >숙련자 모드</button>
+                </>
+            }
+
         </>
     )
 }

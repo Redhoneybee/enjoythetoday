@@ -8,3 +8,148 @@ body{
     color : white;
     font-size : 18px;
 }
+
+form {
+    width : 100%;
+}
+
+input{
+    box-sizing : border-box;
+    all : unset;
+    appearance: none;
+}
+
+a{
+    text-decoration: white;
+    color : inherit;
+}
+
+.btn{
+    margin : 10px 0;
+    padding : 5px 10px;
+    background-color : #f21170;
+    border-radius : 20px;
+    cursor : pointer;
+    box-shadow : 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+        0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+}
+
+/* auth */
+.nameForm {
+    margin-top : 120px;
+    text-align: center;
+    display : flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity : 0;
+    transform : translateY(-40px);
+    -moz-transform : translateY(-40px);
+    -webkit-transform : translateY(-40px);
+    transition : .3s all ease-out;
+    -moz-transition : .3s all ease-out;
+    -webkit-transition : .3s all ease-out;
+}
+
+.nameForm.visible{
+    opacity : 1;
+    transform : translateY(0);
+    -moz-transform : translateY(0);
+    -webkit-transform : translateY(0);
+}
+.formInput{
+    background-color : white;
+    border-radius : 20px;
+    padding : 5px 0;
+    color : #f21170;
+    font-weight : bold;
+}
+.formInput::placeholder{
+    color : rgba(0, 0, 0, 0.2);
+}
+.formSubmit{
+    display : block;
+    margin-top : 15px;
+    padding : 5px 15px;
+    font-weight : bold;
+    background-color : #f21170;
+    border-radius : 20px;
+    text-align : center;
+}
+
+
+/* Home */
+.namePlace{
+    margin-top : 30px;
+    text-align : center;
+}
+
+.namePlace .strong{
+    font-weight : bold;
+    background-color : white;
+    border-radius : 20px;
+    color : #f21170;
+    padding : 2px 5px;
+}
+
+.listPlace {
+    margin-top : 25px;
+    padding : 10px 15px;
+    border-radius : 20px;
+    background-color : white;
+}
+
+.listPlace img{
+    border-radius : 20px;
+    border : 3px solid black;
+    box-shadow : 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+        0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+    transition : .2s all linear;
+    -moz-transition : .2s all linear;
+    -webkit-transition : .2s all linear;
+}
+.listPlace img:hover{
+    box-shadow : none;
+}
+
+/* game rules */
+
+.gameTitle {
+    margin-top : 50px;
+    font-size : 24px;
+}
+.gameRules{
+    font-size : 14px;
+    line-height : 1;
+}
+button#beginner{
+    margin-top : 40px;
+    background-color : #29bb89;
+    border : none;
+    font-weight : bold;
+    color : black;
+}
+button#expert {
+    background-color : #810000;
+    border : none;
+    font-weight : bold;
+    color : black;
+}
+
+/*  game  */
+
+.roundTitle {
+    color : black;
+}
+.gameBoard img{
+    border-radius : 20px;
+    border : 3px solid black;
+}
+.gameBoard button{
+    border : none;
+    background-color : white;
+    font-weight : bold;
+    font-size : 14px;
+    margin : 5px 0;
+    box-shadow : none; 
+}

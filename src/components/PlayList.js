@@ -1,13 +1,7 @@
 import React from "react";
+import game01 from "../images/game01.jpg"
+const PlayList = () =>
+    <img src={game01} width="240px" height="240px" />
 
-const PlayList = () => {
-    return (
-        <div>
-            <div>
-                <img src="https://placeimg.com/250/250/any" />
-            </div>
-        </div>
-    )
-}
 
 export default PlayList;

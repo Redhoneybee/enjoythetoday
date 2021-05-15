@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "../reducers/Users";
 
@@ -19,16 +19,22 @@ const Auth = () => {
             dispatch(setUser(name));
         }
     }
+
+    useEffect(() => {
+        document.querySelector('.nameForm').classList.add('visible');
+
+    }, []);
     return (
         <>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="nameForm">
                 <input
                     type="text"
                     placeholder="너의 이름은?"
                     required
                     value={name}
-                    onChange={onChange} />
-                <input type="submit" value="시작" />
+                    onChange={onChange}
+                    className="formInput" />
+                <input className="formSubmit" type="submit" value="시작" />
             </form>
         </>
     )

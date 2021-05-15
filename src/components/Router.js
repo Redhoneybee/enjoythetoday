@@ -23,7 +23,7 @@ const AppRouter = ({ userObj }) => {
                                 <Home userObj={userObj} />
                             </Route>
                             <Route exact path="/game01">
-                                <Game01 />
+                                <Game01 userObj={userObj} />
                             </Route>
                         </>
                         :
