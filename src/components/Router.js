@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navigation from "./Navigation";
+import Info from "./Info";
 import Home from "../routes/Home";
 import Auth from "../routes/Auth";
 import Game01 from "../routes/Game01";
-
 const AppRouter = ({ userObj }) => {
     return (
         <Router>
@@ -35,6 +35,7 @@ const AppRouter = ({ userObj }) => {
                     }
                 </div>
             </Switch>
+            <Info />
         </Router>
     );
 }

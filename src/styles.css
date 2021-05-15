@@ -194,3 +194,21 @@ button#expert {
     margin : 5px 0;
     box-shadow : none; 
 }
+
+/* info */
+.info{
+    text-align : center;
+    padding : 10px 15px;
+}
+.info .update{
+    color : black;
+    font-size : 18px;
+}
+.info .update:nth-of-type(1){
+    color : red; 
+    font-size : 14px;
+    font-weight : bold;
+}
+.info .update:nth-of-type(2){
+    margin-top : 5px;
+}
