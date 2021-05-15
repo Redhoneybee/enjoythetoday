@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "../routes/Home";
 import Auth from "../routes/Auth";
+import Game01 from "../routes/Game01";
 
 const AppRouter = ({ userObj }) => {
     return (
@@ -12,12 +13,17 @@ const AppRouter = ({ userObj }) => {
                     width: "100%",
                     maxWidth: 980,
                     display: "flex",
-                    justifyContent: "center"
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    alignItems: "center",
                 }}>
-                    {userObj ?
+                    {userObj !== "" ?
                         <>
                             <Route exact path="/">
                                 <Home userObj={userObj} />
+                            </Route>
+                            <Route exact path="/game01">
+                                <Game01 />
                             </Route>
                         </>
                         :
