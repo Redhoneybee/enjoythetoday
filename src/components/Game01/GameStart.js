@@ -66,13 +66,22 @@ const GameStart = () => {
         const url = await storageRef.child(`${animalEnName}/${imageName}`).getDownloadURL();
 
         setProblemImage(url);
+        return url;
     }
 
     useEffect(async () => {
         setLoading(false);
-        await loadProblem();
-        setLoading(true);
-        setStartTime(new Date());
+        const url = await loadProblem();
+
+        // image preload
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+            setLoading(true);
+            document.querySelector('.gameContainer').classList.add('visible');
+            setStartTime(new Date());
+
+        }
     }, [round]);
 
 

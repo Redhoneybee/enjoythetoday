@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
+import Navigation from "./Navigation";
 import Home from "../routes/Home";
 import Auth from "../routes/Auth";
 import Game01 from "../routes/Game01";
@@ -8,6 +9,7 @@ import Game01 from "../routes/Game01";
 const AppRouter = ({ userObj }) => {
     return (
         <Router>
+            <Navigation />
             <Switch>
                 <div style={{
                     width: "100%",

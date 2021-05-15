@@ -16,15 +16,16 @@ const Game01 = ({ userObj }) => {
         if (!checkedPage()) {
             history.push("/");
         }
+
+        document.querySelector('.gameContainer').classList.add('visible');
     }, []);
 
     const onModeClick = (e) => {
         const { target: { name } } = e;
         setMode(name);
     }
-    console.log(userObj);
     return (
-        <>
+        <div className="flex gameContainer" style={{ maxWidth: 310, marginTop: 70 }}>
             {mode ?
                 <GameStart />
                 :
@@ -45,7 +46,7 @@ const Game01 = ({ userObj }) => {
                 </>
             }
 
-        </>
+        </div>
     )
 }
 

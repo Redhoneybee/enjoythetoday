@@ -6,7 +6,7 @@ body{
     background: -webkit-linear-gradient(74deg, rgb(95, 27, 115), rgb(15, 46, 132));
     background: linear-gradient(74deg, rgb(95, 27, 115), rgb(15, 46, 132));
     color : white;
-    font-size : 18px;
+    font-size : 24px;
 }
 
 form {
@@ -34,9 +34,26 @@ a{
         0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
 }
 
+.flex{
+    display : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items: center;
+}
+/* Navigation  */
+nav{
+    position : fixed;
+    top : 5px;
+    left : 10px;
+}
+nav .home{
+    font-size : 45px;
+    border : 100px;
+}
+
 /* auth */
 .nameForm {
-    margin-top : 120px;
+    margin-top : 230px;
     text-align: center;
     display : flex;
     flex-direction: column;
@@ -79,6 +96,18 @@ a{
 
 
 /* Home */
+.homeContainer{
+    max-width : 310px;
+    opacity : 0;
+    pointer-events : none;
+    transition : .3s opacity linear;
+    -moz-transition : .3s opacity linear;
+    -webkit-transition : .3s opacity linear;
+}
+.homeContainer.visible{
+    opacity : 1;
+    pointer-events: initial;
+}
 .namePlace{
     margin-top : 30px;
     text-align : center;
@@ -112,8 +141,20 @@ a{
     box-shadow : none;
 }
 
-/* game rules */
-
+/* game */
+/* board */
+.gameContainer{
+    opacity : 0;
+    pointer-events : none;
+    transition : .2s opacity ease-in-out;
+    -moz-transition : .2s opacity ease-in-out;
+    -webkit-transition : .2s opacity ease-in-out;
+}
+.gameContainer.visible{
+    opacity : 1;
+    pointer-events : initial;
+}
+/* rules */
 .gameTitle {
     margin-top : 50px;
     font-size : 24px;

@@ -8,7 +8,6 @@ const Auth = () => {
 
     const onChange = (e) => {
         const { target: { value } } = e;
-
         setName(value);
     }
 
@@ -22,7 +21,6 @@ const Auth = () => {
 
     useEffect(() => {
         document.querySelector('.nameForm').classList.add('visible');
-
     }, []);
     return (
         <>
