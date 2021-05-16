@@ -100,10 +100,10 @@ const GameStart = ({ mode }) => {
 
     useEffect(() => {
         // prelaod code
-        function imagePreload() {
+        async function imagePreload() {
             let temp = [];
             for (let i = 0; i < GAME_ROUND; ++i) {
-                const problemObj = getGameProblemImage();
+                const problemObj = await getGameProblemImage();
 
                 // image preload
                 const img = new Image();
