@@ -98,57 +98,61 @@ const GameStart = ({ mode }) => {
         return gameObj;
     }
 
-    useEffect(async () => {
+    useEffect(() => {
         // prelaod code
+        function imagePreload() {
+            let temp = [];
+            for (let i = 0; i < GAME_ROUND; ++i) {
+                const problemObj = getGameProblemImage();
 
-        let temp = [];
-        for (let i = 0; i < GAME_ROUND; ++i) {
-            const problemObj = await getGameProblemImage();
+                // image preload
+                const img = new Image();
+                img.src = problemObj.imgUrl;
 
-            // image preload
-            const img = new Image();
-            img.src = problemObj.imgUrl;
+                temp.push(problemObj);
+            }
 
-            temp.push(problemObj);
+            setProblems(temp);
+            // 문제 10문제 선별 완료
+            if (temp.length === 10) {
+                setLoading(true);
+            }
         }
-
-        setProblems(temp);
-        // 문제 10문제 선별 완료
-        if (temp.length === 10) {
-            setLoading(true);
-        }
+        imagePreload();
 
     }, []);
 
-    useEffect(async () => {
-        if (loading === true && round <= GAME_ROUND) {
-            // 로딩이 완료 되었을때만
-            if (timeoutId !== null) {
-                clearTimeout(timeoutId);
-                setTimeoutId(null);
-            }
-            const problem = problems[round - 1];
-            document.querySelector('.gameImage').classList.remove('expertMode');
+    useEffect(() => {
+        function drawRound() {
+            if (loading === true && round <= GAME_ROUND) {
+                // 로딩이 완료 되었을때만
+                if (timeoutId !== null) {
+                    clearTimeout(timeoutId);
+                    setTimeoutId(null);
+                }
+                const problem = problems[round - 1];
+                document.querySelector('.gameImage').classList.remove('expertMode');
 
-            setProblemImage(problem.imgUrl);
-            setAnswer(problem.answer);
+                setProblemImage(problem.imgUrl);
+                setAnswer(problem.answer);
 
-            loadRound(problem);
+                loadRound(problem);
 
-            document.querySelector('.gameContainer').classList.add('visible');
+                document.querySelector('.gameContainer').classList.add('visible');
 
-            if (mode === BEGINNER_MODE) {
-                setStartTime(new Date());
-            } else if (mode === EXPERT_MODE) {
-                setStartTime(new Date());
-                const id = setTimeout(() =>
-                    document.querySelector('.gameImage').classList.add('expertMode')
-                    , 100);
+                if (mode === BEGINNER_MODE) {
+                    setStartTime(new Date());
+                } else if (mode === EXPERT_MODE) {
+                    setStartTime(new Date());
+                    const id = setTimeout(() =>
+                        document.querySelector('.gameImage').classList.add('expertMode')
+                        , 100);
 
-                setTimeoutId(id);
+                    setTimeoutId(id);
+                }
             }
         }
-
+        drawRound();
     }, [loading, round]);
 
 

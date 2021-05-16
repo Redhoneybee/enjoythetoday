@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navigation from "./Navigation";
@@ -11,29 +11,31 @@ const AppRouter = ({ userObj }) => {
         <Router>
             <Navigation />
             <Switch>
-                <div style={{
-                    width: "100%",
-                    maxWidth: 980,
-                    display: "flex",
-                    justifyContent: "center",
-                    flexDirection: "column",
-                    alignItems: "center",
-                }}>
-                    {userObj !== "" ?
-                        <>
+                <>
+                    <div style={{
+                        width: "100%",
+                        maxWidth: 980,
+                        display: "flex",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}>
+                        {userObj !== "" ?
+                            <>
+                                <Route exact path="/">
+                                    <Home userObj={userObj} />
+                                </Route>
+                                <Route exact path="/game01">
+                                    <Game01 userObj={userObj} />
+                                </Route>
+                            </>
+                            :
                             <Route exact path="/">
-                                <Home userObj={userObj} />
+                                <Auth />
                             </Route>
-                            <Route exact path="/game01">
-                                <Game01 userObj={userObj} />
-                            </Route>
-                        </>
-                        :
-                        <Route exact path="/">
-                            <Auth />
-                        </Route>
-                    }
-                </div>
+                        }
+                    </div>
+                </>
             </Switch>
             <Info />
         </Router>

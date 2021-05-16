@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { storageService } from "fbase";
 
 import Rules from "../components/Game01/Rules";
 import GameStart from "../components/Game01/GameStart";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Rating from "../Rating";
 import { useSelector } from "react-redux";
 

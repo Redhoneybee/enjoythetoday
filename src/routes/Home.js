@@ -23,7 +23,7 @@ const Home = ({ userObj }) => {
                 className="btn"
                 onClick={onClick}
                 style={{ marginTop: 20 }}>수정하기</span>
-            <div class="listPlace">
+            <div className="listPlace">
                 <Link to="game01">
                     <PlayList />
                 </Link>

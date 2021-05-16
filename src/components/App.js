@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 
 // routes
-import Loading from "./Loading";
 import AppRouter from "./Router";
 
 const App = () => {
