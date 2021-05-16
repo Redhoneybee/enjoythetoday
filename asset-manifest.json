@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/enjoythetoday/static/css/main.7ec08bd4.chunk.css",
-    "main.js": "/enjoythetoday/static/js/main.db2026c0.chunk.js",
-    "main.js.map": "/enjoythetoday/static/js/main.db2026c0.chunk.js.map",
+    "main.js": "/enjoythetoday/static/js/main.5c03210b.chunk.js",
+    "main.js.map": "/enjoythetoday/static/js/main.5c03210b.chunk.js.map",
     "runtime-main.js": "/enjoythetoday/static/js/runtime-main.1498a376.js",
     "runtime-main.js.map": "/enjoythetoday/static/js/runtime-main.1498a376.js.map",
     "static/js/2.ac49cdc6.chunk.js": "/enjoythetoday/static/js/2.ac49cdc6.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.1498a376.js",
     "static/js/2.ac49cdc6.chunk.js",
     "static/css/main.7ec08bd4.chunk.css",
-    "static/js/main.db2026c0.chunk.js"
+    "static/js/main.5c03210b.chunk.js"
   ]
 }
