@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/enjoythetoday/static/css/main.7ec08bd4.chunk.css",
-    "main.js": "/enjoythetoday/static/js/main.f336b4d7.chunk.js",
-    "main.js.map": "/enjoythetoday/static/js/main.f336b4d7.chunk.js.map",
+    "main.js": "/enjoythetoday/static/js/main.2b986366.chunk.js",
+    "main.js.map": "/enjoythetoday/static/js/main.2b986366.chunk.js.map",
     "runtime-main.js": "/enjoythetoday/static/js/runtime-main.1498a376.js",
     "runtime-main.js.map": "/enjoythetoday/static/js/runtime-main.1498a376.js.map",
-    "static/js/2.75cbc0b6.chunk.js": "/enjoythetoday/static/js/2.75cbc0b6.chunk.js",
-    "static/js/2.75cbc0b6.chunk.js.map": "/enjoythetoday/static/js/2.75cbc0b6.chunk.js.map",
+    "static/js/2.bb3659bc.chunk.js": "/enjoythetoday/static/js/2.bb3659bc.chunk.js",
+    "static/js/2.bb3659bc.chunk.js.map": "/enjoythetoday/static/js/2.bb3659bc.chunk.js.map",
     "index.html": "/enjoythetoday/index.html",
     "static/css/main.7ec08bd4.chunk.css.map": "/enjoythetoday/static/css/main.7ec08bd4.chunk.css.map",
-    "static/js/2.75cbc0b6.chunk.js.LICENSE.txt": "/enjoythetoday/static/js/2.75cbc0b6.chunk.js.LICENSE.txt",
+    "static/js/2.bb3659bc.chunk.js.LICENSE.txt": "/enjoythetoday/static/js/2.bb3659bc.chunk.js.LICENSE.txt",
     "static/media/enjoythetoday.507f925e.png": "/enjoythetoday/static/media/enjoythetoday.507f925e.png",
     "static/media/game01.5b770aa0.jpg": "/enjoythetoday/static/media/game01.5b770aa0.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.1498a376.js",
-    "static/js/2.75cbc0b6.chunk.js",
+    "static/js/2.bb3659bc.chunk.js",
     "static/css/main.7ec08bd4.chunk.css",
-    "static/js/main.f336b4d7.chunk.js"
+    "static/js/main.2b986366.chunk.js"
   ]
 }
