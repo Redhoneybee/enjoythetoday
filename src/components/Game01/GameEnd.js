@@ -2,7 +2,7 @@ import React from "react";
 import Rating from "../Rating";
 import { useSelector } from "react-redux";
 
-import endDatas from "../../datas/game01/game01_result";
+import endDatas from "../../datas/game01/game01_result.json";
 
 import kakaoImage from "../../images/enjoythetoday.png";
 import Kakao from "../ShareForKakao";
@@ -14,8 +14,8 @@ const SPEED = "speed";
 const GameEnd = ({ accuracy, speed, mode }) => {
     const user = useSelector(state => state.user);
 
-    const accuracyRating = Math.floor(accuracy / 10);
-    const speedRating = Math.floor(speed / 10);
+    const accuracyRating = Math.floor(accuracy === 0 ? 0 : accuracy / 10);
+    const speedRating = Math.floor(speed === 0 ? 0 : speed / 10);
 
     return (
         <>
