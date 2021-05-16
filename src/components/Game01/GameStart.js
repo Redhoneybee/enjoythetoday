@@ -12,6 +12,8 @@ const TOTAL_ALREADY_PROBLEM = 19;
 const BEGINNER_MODE = "beginner";
 const EXPERT_MODE = "expert";
 
+const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake", "lion", "tiger", "giraffe", "elephant", "rhino", "hippo", "crocodile", "penguin", "owl", "bear", "pig", "cow", "chicken", "eagle"];
+
 const GameStart = ({ mode }) => {
     const [round, setRound] = useState(1);
     const [problemImage, setProblemImage] = useState("");
@@ -32,7 +34,9 @@ const GameStart = ({ mode }) => {
     // storage
     const storageRef = storageService.ref();
 
-    const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake", "lion", "tiger", "giraffe", "elephant", "rhino", "hippo", "crocodile", "penguin", "owl", "bear", "pig", "cow", "chicken", "eagle"];
+
+    // 랜덤 문제 출제
+    const getRandomProblem = () => Math.floor(Math.random() * TOTAL_ALREADY_PROBLEM);
 
     const getOtherNumber = (itemsObj) => {
         let count = 0;
@@ -40,14 +44,14 @@ const GameStart = ({ mode }) => {
         else if (mode === EXPERT_MODE) count = 4;
 
         while (true) {
-            const other = Math.floor(Math.random() * (TOTAL_ALREADY_PROBLEM - 1)) + 1;
+            const other = getRandomProblem();
             if (itemsObj.indexOf(other) <= -1) itemsObj.push(other);
             if (itemsObj.length === count) return itemsObj;
         }
     }
 
     const getImageName = (animalEnName) => {
-        const imageNumber = Math.floor(Math.random() * (4)).toString();
+        const imageNumber = Math.floor(Math.random() * (5)).toString();
         const imageName = MappingData[animalEnName][imageNumber];
         return imageName;
     }
@@ -76,8 +80,7 @@ const GameStart = ({ mode }) => {
     }
 
 
-    // 랜덤 문제 출제
-    const getRandomProblem = () => Math.floor(Math.random() * (TOTAL_ALREADY_PROBLEM - 1)) + 1;
+
 
     const getGameProblemImage = async () => {
         const problemNumber = getRandomProblem();
@@ -123,7 +126,7 @@ const GameStart = ({ mode }) => {
     }, []);
 
     useEffect(() => {
-        function drawRound() {
+        async function drawRound() {
             if (loading === true && round <= GAME_ROUND) {
                 // 로딩이 완료 되었을때만
                 if (timeoutId !== null) {
@@ -133,8 +136,8 @@ const GameStart = ({ mode }) => {
                 const problem = problems[round - 1];
                 document.querySelector('.gameImage').classList.remove('expertMode');
 
-                setProblemImage(problem.imgUrl);
-                setAnswer(problem.answer);
+                await setProblemImage(problem.imgUrl);
+                await setAnswer(problem.answer);
 
                 loadRound(problem);
 
