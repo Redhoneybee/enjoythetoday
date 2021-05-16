@@ -30,6 +30,7 @@ const Auth = () => {
                     placeholder="너의 이름은?"
                     required
                     value={name}
+                    maxLength="8"
                     onChange={onChange}
                     className="formInput" />
                 <input className="formSubmit" type="submit" value="시작" />

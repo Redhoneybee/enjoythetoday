@@ -3,5 +3,19 @@
     "dog": "강아지",
     "rabbit": "토끼",
     "snake": "뱀",
-    "turtle": "거북이"
+    "turtle": "거북이",
+    "lion": "사자",
+    "tiger": "호랑이",
+    "giraffe": "기린",
+    "elephant": "코끼리",
+    "rhino": "코뿔소",
+    "hippo": "하마",
+    "crocodile": "악어",
+    "penguin": "펭귄",
+    "owl": "부엉이",
+    "bear": "곰",
+    "pig": "돼지",
+    "cow": "소",
+    "chicken": "닭",
+    "eagle": "독수리"
 }

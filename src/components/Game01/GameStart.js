@@ -32,7 +32,7 @@ const GameStart = ({ mode }) => {
     // storage
     const storageRef = storageService.ref();
 
-    const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake"];
+    const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake", "lion", "tiger", "giraffe", "elephant", "hippo", "crocodile", "penguin", "owl", "bear", "pig", "cow", "chicken", "eagle"];
 
     const getOtherNumber = (itemsObj) => {
         let count = 0;
@@ -155,17 +155,19 @@ const GameStart = ({ mode }) => {
     const onClick = (e) => {
         const { target: { name } } = e;
 
-        if (answer === name) setAccuracy(accuracy + 5);
+        if (answer === name) {
+            setAccuracy(accuracy + 5);
+            const endTime = new Date();
 
-        const endTime = new Date();
+            const stopTime = (endTime - startTime) / 1000;
 
-        const stopTime = (endTime - startTime) / 1000;
+            if (stopTime < 0.5) setSpeed(speed + 5);
+            else if (stopTime > 1.5) setSpeed(speed + 1);
+            else if (stopTime > 1.25) setSpeed(speed + 2);
+            else if (stopTime > 1) setSpeed(speed + 3);
+            else if (stopTime >= 0.5) setSpeed(speed + 4);
+        }
 
-        if (stopTime < 0.5) setSpeed(speed + 5);
-        else if (stopTime > 1.5) setSpeed(speed + 1);
-        else if (stopTime > 1.25) setSpeed(speed + 2);
-        else if (stopTime > 1) setSpeed(speed + 3);
-        else if (stopTime >= 0.5) setSpeed(speed + 4);
         setRound(round + 1);
     }
 
@@ -198,7 +200,7 @@ const GameStart = ({ mode }) => {
                     }
                 </>
                 :
-                <GameEnd accuracy={accuracy} speed={speed} />
+                <GameEnd accuracy={accuracy} speed={speed} mode={mode} />
             }
 
         </>

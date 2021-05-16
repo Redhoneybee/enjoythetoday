@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Rating from "../Rating";
 import { useSelector } from "react-redux";
+
+import endDatas from "../../datas/game01/game01_result";
 
 import kakaoImage from "../../images/enjoythetoday.png";
 import Kakao from "../ShareForKakao";
 
-const GameEnd = ({ accuracy, speed }) => {
+
+const ACCURACY = "accuracy";
+const SPEED = "speed";
+
+const GameEnd = ({ accuracy, speed, mode }) => {
     const user = useSelector(state => state.user);
+
+    const accuracyRating = Math.floor(accuracy / 10);
+    const speedRating = Math.floor(speed / 10);
 
     return (
         <>
@@ -26,10 +35,16 @@ const GameEnd = ({ accuracy, speed }) => {
                     <span><span className="strong">{user}</span> 님의 게임 결과</span>
                 </div>
                 <div style={{ marginTop: 15 }}>
-                    <span>정확도 : <Rating rating={accuracy / 10} /></span>
+                    <span>정확도 : <Rating rating={accuracyRating} /></span>
+                    <div>
+                        {endDatas[mode][ACCURACY][accuracyRating]}
+                    </div>
                 </div>
                 <div style={{ marginTop: 15 }}>
-                    <span>속도 : <Rating rating={speed / 10} /></span>
+                    <span>속도 : <Rating rating={speedRating} /></span>
+                    <div>
+                        {endDatas[mode][SPEED][speedRating]}
+                    </div>
                 </div>
                 <span style={{ margin: "25px 0" }}>총 점 : <span className="strong">{accuracy + speed}</span></span>
             </div>
