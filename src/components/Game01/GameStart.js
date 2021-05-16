@@ -47,7 +47,7 @@ const GameStart = ({ mode }) => {
     }
 
     const getImageName = (animalEnName) => {
-        const imageNumber = Math.floor(Math.random() * (5)).toString();
+        const imageNumber = Math.floor(Math.random() * (4)).toString();
         const imageName = MappingData[animalEnName][imageNumber];
         return imageName;
     }
