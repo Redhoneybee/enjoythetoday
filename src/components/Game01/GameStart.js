@@ -7,13 +7,13 @@ import GameEnd from "./GameEnd";
 import Loading from "../Loading";
 
 const GAME_ROUND = 10;
-const TOTAL_ALREADY_PROBLEM = 19;
+const TOTAL_ALREADY_PROBLEM = 5;
 
 const BEGINNER_MODE = "beginner";
 const EXPERT_MODE = "expert";
 
-const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake", "lion", "tiger", "giraffe", "elephant", "rhino", "hippo", "crocodile", "penguin", "owl", "bear", "pig", "cow", "chicken", "eagle"];
-
+const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake"];
+// , "lion", "tiger", "giraffe", "elephant", "rhino", "hippo", "crocodile", "penguin", "owl", "bear", "pig", "cow", "chicken", "eagle"
 const GameStart = ({ mode }) => {
     const [round, setRound] = useState(1);
     const [problemImage, setProblemImage] = useState("");
