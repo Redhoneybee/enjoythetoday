@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 
+import kakaoshareImg from "../images/kakaoshare.png";
+
 const Kakao = ({ kakaoImage }) => {
     const createKakaoButton = () => {
         if (window.Kakao) {
@@ -18,8 +20,8 @@ const Kakao = ({ kakaoImage }) => {
                     description: '#MadForCode #EnjoyTheToday #kakao #정확하게빠르게',
                     imageUrl: kakaoImage, // i.e. process.env.FETCH_URL + '/logo.png'
                     link: {
-                        mobileWebUrl: 'https://redhoneybee.github.io',
-                        webUrl: 'https://redhoneybee.github.io',
+                        mobileWebUrl: 'https://redhoneybee.github.io/enjoythetoday',
+                        webUrl: 'https://redhoneybee.github.io/enjoythetoday',
                     },
                 },
                 social: {
@@ -31,15 +33,15 @@ const Kakao = ({ kakaoImage }) => {
                     {
                         title: '웹으로 보기',
                         link: {
-                            mobileWebUrl: 'https://redhoneybee.github.io',
-                            webUrl: 'https://redhoneybee.github.io',
+                            mobileWebUrl: 'https://redhoneybee.github.io/enjoythetoday',
+                            webUrl: 'https://redhoneybee.github.io/enjoythetoday',
                         },
                     },
                     {
                         title: '앱으로 보기',
                         link: {
-                            mobileWebUrl: 'https://redhoneybee.github.io',
-                            webUrl: 'https://redhoneybee.github.io',
+                            mobileWebUrl: 'https://redhoneybee.github.io/enjoythetoday',
+                            webUrl: 'https://redhoneybee.github.io/enjoythetoday',
                         },
                     },
                 ],
@@ -55,9 +57,15 @@ const Kakao = ({ kakaoImage }) => {
     }
     return (
         <>
-            <button id="kakao-link-btn" onClick={onClickKakao} style={{ border: "none" }}>
-                <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-            </button>
+            <img
+                id="kakao-link-btn"
+                onClick={onClickKakao}
+                src={kakaoshareImg}
+                style={{
+                    borderRadius: 10,
+                    marginTop: 20,
+                    cursor: "pointer"
+                }} />
         </>
     );
 }

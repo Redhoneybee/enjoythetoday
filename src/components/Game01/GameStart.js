@@ -6,7 +6,13 @@ import MappingData from "../../datas/game01/game01.json";
 import GameEnd from "./GameEnd";
 import Loading from "../Loading";
 
-const GameStart = () => {
+const GAME_ROUND = 10;
+const TOTAL_ALREADY_PROBLEM = 5;
+
+const BEGINNER_MODE = "beginner";
+const EXPERT_MODE = "expert";
+
+const GameStart = ({ mode }) => {
     const [round, setRound] = useState(1);
     const [problemImage, setProblemImage] = useState("");
     const [items, setItems] = useState([]);
@@ -16,17 +22,27 @@ const GameStart = () => {
     const [speed, setSpeed] = useState(0);
     const [startTime, setStartTime] = useState(0);
 
+
+    // timeout handler
+    const [timeoutId, setTimeoutId] = useState(null);
+
+    // problems preload
+    const [problems, setProblems] = useState([]);
+
+    // storage
     const storageRef = storageService.ref();
 
     const AnimalList = ["cat", "dog", "rabbit", "turtle", "snake"];
-    // 문제 종류 수 
-    const max = AnimalList.length;
 
-    const getOtherChocie = (itemsObj) => {
+    const getOtherNumber = (itemsObj) => {
+        let count = 0;
+        if (mode === BEGINNER_MODE) count = 3;
+        else if (mode === EXPERT_MODE) count = 4;
+
         while (true) {
-            const other = Math.floor(Math.random() * (max - 1)) + 1;
+            const other = Math.floor(Math.random() * (TOTAL_ALREADY_PROBLEM - 1)) + 1;
             if (itemsObj.indexOf(other) <= -1) itemsObj.push(other);
-            if (itemsObj.length === 3) return itemsObj;
+            if (itemsObj.length === count) return itemsObj;
         }
     }
 
@@ -36,54 +52,104 @@ const GameStart = () => {
         return imageName;
     }
 
-    const suffleItems = (items) => {
-        const l = items.length;
-        let itemsObj;
-        for (let i = 0; i < l; ++i) {
-            let j = Math.floor(Math.random() * (i + 1));
-            itemsObj = Array.from(items);
-            const x = itemsObj[i];
-            itemsObj[i] = itemsObj[j];
-            itemsObj[j] = x;
+    const suffleItems = (_items) => {
+        for (let i = _items.length; i; i -= 1) {
+            let j = Math.floor(Math.random() * i);
+
+            let tmp = _items[i - 1];
+            _items[i - 1] = _items[j];
+            _items[j] = tmp;
         }
 
-        setItems(itemsObj);
+        setItems(_items);
     }
 
-    const loadProblem = async () => {
-        // 서로 다른 번호 두개 추출
-        const choose = Math.floor(Math.random() * (max - 1)) + 1;
-        let itemsObj = [choose];
-        itemsObj = getOtherChocie(itemsObj);
+    // 라운드 로딩 
+    const loadRound = (problem) => {
+        let itemsObj = [];
+        itemsObj.push(problem.number);
 
-        setItems(itemsObj);
+
+        itemsObj = getOtherNumber(itemsObj);
+
         suffleItems(itemsObj);
+    }
 
-        const animalEnName = AnimalList[choose];
-        setAnswer(animalEnName);
 
+    // 랜덤 문제 출제
+    const getRandomProblem = () => Math.floor(Math.random() * (TOTAL_ALREADY_PROBLEM - 1)) + 1;
+
+    const getGameProblemImage = async () => {
+        const problemNumber = getRandomProblem();
+
+        const animalEnName = AnimalList[problemNumber];
         const imageName = getImageName(animalEnName);
 
-        const url = await storageRef.child(`${animalEnName}/${imageName}`).getDownloadURL();
+        const storagePath = `${animalEnName}/${imageName}`;
 
-        setProblemImage(url);
-        return url;
+        const url = await storageRef.child(storagePath).getDownloadURL();
+
+        const gameObj = {
+            number: problemNumber,
+            answer: animalEnName,
+            imgUrl: url,
+        };
+
+        return gameObj;
     }
 
     useEffect(async () => {
-        setLoading(false);
-        const url = await loadProblem();
+        // prelaod code
 
-        // image preload
-        const img = new Image();
-        img.src = url;
-        img.onload = () => {
-            setLoading(true);
-            document.querySelector('.gameContainer').classList.add('visible');
-            setStartTime(new Date());
+        let temp = [];
+        for (let i = 0; i < GAME_ROUND; ++i) {
+            const problemObj = await getGameProblemImage();
 
+            // image preload
+            const img = new Image();
+            img.src = problemObj.imgUrl;
+
+            temp.push(problemObj);
         }
-    }, [round]);
+
+        setProblems(temp);
+        // 문제 10문제 선별 완료
+        if (temp.length === 10) {
+            setLoading(true);
+        }
+
+    }, []);
+
+    useEffect(async () => {
+        if (loading === true && round <= GAME_ROUND) {
+            // 로딩이 완료 되었을때만
+            if (timeoutId !== null) {
+                clearTimeout(timeoutId);
+                setTimeoutId(null);
+            }
+            const problem = problems[round - 1];
+            document.querySelector('.gameImage').classList.remove('expertMode');
+
+            setProblemImage(problem.imgUrl);
+            setAnswer(problem.answer);
+
+            loadRound(problem);
+
+            document.querySelector('.gameContainer').classList.add('visible');
+
+            if (mode === BEGINNER_MODE) {
+                setStartTime(new Date());
+            } else if (mode === EXPERT_MODE) {
+                setStartTime(new Date());
+                const id = setTimeout(() =>
+                    document.querySelector('.gameImage').classList.add('expertMode')
+                    , 100);
+
+                setTimeoutId(id);
+            }
+        }
+
+    }, [loading, round]);
 
 
     const onClick = (e) => {
@@ -95,11 +161,11 @@ const GameStart = () => {
 
         const stopTime = (endTime - startTime) / 1000;
 
-        if (stopTime < 0.3) setSpeed(speed + 5);
+        if (stopTime < 0.5) setSpeed(speed + 5);
         else if (stopTime > 1.5) setSpeed(speed + 1);
-        else if (stopTime > 1) setSpeed(speed + 2);
-        else if (stopTime > 0.7) setSpeed(speed + 3);
-        else if (stopTime >= 0.3) setSpeed(speed + 4);
+        else if (stopTime > 1.25) setSpeed(speed + 2);
+        else if (stopTime > 1) setSpeed(speed + 3);
+        else if (stopTime >= 0.5) setSpeed(speed + 4);
         setRound(round + 1);
     }
 
@@ -120,15 +186,15 @@ const GameStart = () => {
                                 border: "5px solid #810000"
                             }}>
                             <h3 style={{ color: "black" }}>ROUND -{round}-</h3>
-                            <img src={problemImage} width="150px" height="150px" />
+                            <img className="gameImage" src={problemImage} width="150px" height="150px" />
                             {items &&
-                                items.map(item =>
-                                    <button name={AnimalList[item]} onClick={onClick}>{ProblemNameData[AnimalList[item]]}</button>
+                                items.map((item, i) =>
+                                    <button key={i} name={AnimalList[item]} onClick={onClick}>{ProblemNameData[AnimalList[item]]}</button>
                                 )
                             }
                         </div>
                         :
-                        <Loading />
+                        <Loading comment={"문제 구성중..."} />
                     }
                 </>
                 :

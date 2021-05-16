@@ -27,7 +27,7 @@ const Game01 = ({ userObj }) => {
     return (
         <div className="flex gameContainer" style={{ maxWidth: 310, marginTop: 70 }}>
             {mode ?
-                <GameStart />
+                <GameStart mode={mode} />
                 :
                 <>
                     <Rules />

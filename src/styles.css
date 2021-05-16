@@ -233,7 +233,7 @@ button#expert {
 }
 
 /*  game  */
-
+/* game 01 */
 .roundTitle {
     color : black;
 }
@@ -254,6 +254,16 @@ button#expert {
     margin : 5px 0;
     box-shadow : none; 
     cursor : pointer;
+}
+
+.gameBoard .gameImage{
+    transition : .1s opacity ease-in-out;
+    -moz-transition : .1s opacity ease-in-out;
+    -webkit-transition : .1s opacity ease-in-out;
+}
+
+.gameBoard .gameImage.expertMode{
+    opacity : 0;
 }
 
 /* info */
