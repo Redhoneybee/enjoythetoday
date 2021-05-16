@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Rating from "../Rating";
 import { useSelector } from "react-redux";
 
@@ -12,6 +12,9 @@ const ACCURACY = "accuracy";
 const SPEED = "speed";
 
 const GameEnd = ({ accuracy, speed, mode }) => {
+    const [commentAccuracy, setCommentAccuracy] = useState(endDatas[mode][ACCURACY]);
+    const [commentSpeed, setCommentSpeed] = useState(endDatas[mode][SPEED]);
+
     const user = useSelector(state => state.user);
 
     const accuracyRating = Math.floor(accuracy === 0 ? 0 : accuracy / 10);
@@ -37,13 +40,13 @@ const GameEnd = ({ accuracy, speed, mode }) => {
                 <div style={{ marginTop: 15 }}>
                     <span>정확도 : <Rating rating={accuracyRating} /></span>
                     <div>
-                        {endDatas[mode][ACCURACY][accuracyRating]}
+                        {commentAccuracy[accuracyRating]}
                     </div>
                 </div>
                 <div style={{ marginTop: 15 }}>
                     <span>속도 : <Rating rating={speedRating} /></span>
                     <div>
-                        {endDatas[mode][SPEED][speedRating]}
+                        {commentSpeed[speedRating]}
                     </div>
                 </div>
                 <span style={{ margin: "25px 0" }}>총 점 : <span className="strong">{accuracy + speed}</span></span>
